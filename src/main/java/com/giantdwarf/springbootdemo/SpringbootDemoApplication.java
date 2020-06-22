@@ -2,6 +2,7 @@ package com.giantdwarf.springbootdemo;
 
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
@@ -20,7 +21,10 @@ public class SpringbootDemoApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootDemoApplication.class, args);
+        //        SpringApplication.run(SpringbootDemoApplication.class, args);
+        SpringApplication app = new SpringApplication(SpringbootDemoApplication.class);
+        app.setBannerMode(Banner.Mode.OFF);
+        app.run(args);
     }
 
 
