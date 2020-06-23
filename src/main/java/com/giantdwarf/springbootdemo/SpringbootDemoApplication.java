@@ -23,7 +23,7 @@ public class SpringbootDemoApplication {
     public static void main(String[] args) {
         //        SpringApplication.run(SpringbootDemoApplication.class, args);
         SpringApplication app = new SpringApplication(SpringbootDemoApplication.class);
-        app.setBannerMode(Banner.Mode.OFF);
+        app.addListeners(new SampleListener());
         app.run(args);
     }
 
