@@ -1,4 +1,4 @@
-package com.giantdwarf.springbootdemo;
+package com.giantdwarf.springbootdemo.springapp;
 
 import org.springframework.boot.context.event.ApplicationStartingEvent;
 import org.springframework.context.ApplicationEvent;
