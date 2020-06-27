@@ -12,12 +12,16 @@ public class AppRunner implements ApplicationRunner {
     @Autowired
     YangProperties yangProperties;
 
+    @Autowired
+    public String hello;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("-------------");
-        System.out.println("name = " + yangProperties.getName());
-        System.out.println("age = " + yangProperties.getAge());
-        System.out.println("yangProperties = " + yangProperties.getSessionTimeout());
+        System.out.println("hello = " + hello);
+        System.out.println("yangProperties = " + yangProperties.getName());
+        System.out.println("yangProperties = " + yangProperties.getFullName());
+
 
     }
 }
