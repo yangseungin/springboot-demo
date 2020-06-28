@@ -1,5 +1,7 @@
 package com.giantdwarf.springbootdemo.springapp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AppRunner implements ApplicationRunner {
 
+    private Logger logger = LoggerFactory.getLogger(AppRunner.class);
+
     @Autowired
     YangProperties yangProperties;
 
@@ -17,10 +21,10 @@ public class AppRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("-------------");
-        System.out.println("hello = " + hello);
-        System.out.println("yangProperties = " + yangProperties.getName());
-        System.out.println("yangProperties = " + yangProperties.getFullName());
+        logger.debug("-------------");
+        logger.debug("hello = " + hello);
+        logger.debug("yangProperties = " + yangProperties.getName());
+        logger.debug("yangProperties = " + yangProperties.getFullName());
 
 
     }
