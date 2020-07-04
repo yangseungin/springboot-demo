@@ -11,12 +11,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 //@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK) // default
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // random port embedded tomcat
@@ -47,13 +48,18 @@ class SampleControllerTest {
     public void hello2() throws Exception {
         when(mockSampleService.getName()).thenReturn("seungin");
 
-//        String result = testRestTemplate.getForObject("/hello", String.class);
-//        assertThat(result).isEqualTo("hello seungin");
-
         webTestClient.get().uri("/hello").exchange().expectStatus().isOk()
                 .expectBody(String.class).isEqualTo("hello seungin");
 
-
+    }
+    @Test
+    public void hello3() throws Exception {
+        mockMvc.perform(get("/hello3"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(view().name("hello3"))
+                .andExpect(model().attribute("name",is("seungin")))
+                .andExpect(content().string(containsString("seungin")));
     }
 
 }
