@@ -1,8 +1,8 @@
 package com.giantdwarf.springbootdemo.exception;
 
-public class AppError {
+public class ErrorData {
     private String message;
-    private String reason;
+    private String code;
 
     public String getMessage() {
         return message;
@@ -12,11 +12,11 @@ public class AppError {
         this.message = message;
     }
 
-    public String getReason() {
-        return reason;
+    public String getCode() {
+        return code;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setCode(String code) {
+        this.code = code;
     }
 }
