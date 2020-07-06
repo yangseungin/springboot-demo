@@ -1,6 +1,7 @@
 package com.giantdwarf.springbootdemo.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -15,4 +16,11 @@ public class WebConfig implements WebMvcConfigurer {
                 .setCachePeriod(20);
     }
     //WebMvcConfigurer가 제공하는 callback 메서드를 사용하여 설정
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:18080");
+
+    }
 }
