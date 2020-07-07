@@ -30,6 +30,7 @@ dependencies {
     testImplementation('org.seleniumhq.selenium:htmlunit-driver:2.41.0')
     testImplementation('net.sourceforge.htmlunit:htmlunit:2.41.0')
     compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+    runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'com.h2database:h2'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

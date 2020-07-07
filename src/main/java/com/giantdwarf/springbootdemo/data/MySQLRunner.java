@@ -12,8 +12,8 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.Statement;
 
-//@Component
-public class H2Runner implements ApplicationRunner {
+@Component
+public class MySQLRunner implements ApplicationRunner {
 
     @Autowired
     DataSource dataSource;
@@ -21,7 +21,7 @@ public class H2Runner implements ApplicationRunner {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    Logger logger = LoggerFactory.getLogger(H2Runner.class);
+    Logger logger = LoggerFactory.getLogger(MySQLRunner.class);
 
 
     @Override
@@ -30,7 +30,7 @@ public class H2Runner implements ApplicationRunner {
         try(Connection connection = dataSource.getConnection()){
             logger.info(connection.getMetaData().getURL());
             logger.info(connection.getMetaData().getUserName());
-            logger.info(connection.getMetaData().getURL());
+            System.out.println(dataSource.getClass());
 
             Statement statement = connection.createStatement();
             String sql = "CREATE TABLE USER(ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY  (id))";
