@@ -12,8 +12,8 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.Statement;
 
-//@Component
-public class MySQLRunner implements ApplicationRunner {
+@Component
+public class PostgresRunner implements ApplicationRunner {
 
     @Autowired
     DataSource dataSource;
@@ -21,7 +21,7 @@ public class MySQLRunner implements ApplicationRunner {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    Logger logger = LoggerFactory.getLogger(MySQLRunner.class);
+    Logger logger = LoggerFactory.getLogger(PostgresRunner.class);
 
 
     @Override
@@ -30,14 +30,15 @@ public class MySQLRunner implements ApplicationRunner {
         try(Connection connection = dataSource.getConnection()){
             logger.info(connection.getMetaData().getURL());
             logger.info(connection.getMetaData().getUserName());
+            logger.info(connection.getMetaData().getDriverName());
             System.out.println(dataSource.getClass());
 
             Statement statement = connection.createStatement();
-            String sql = "CREATE TABLE USER(ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY  (id))";
+            String sql = "CREATE TABLE account(ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY  (id))";
             statement.executeUpdate(sql);
 
         }
-        jdbcTemplate.execute("INSERT INTO USER VALUES(1,'yang')");
+        jdbcTemplate.execute("INSERT INTO account VALUES(2, 'yang')");
 
 
     }
