@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.Statement;
 
-@Component
+//@Component
 public class PostgresRunner implements ApplicationRunner {
 
     @Autowired
