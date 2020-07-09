@@ -8,7 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class MongoRunner implements ApplicationRunner {
 
     @Autowired
