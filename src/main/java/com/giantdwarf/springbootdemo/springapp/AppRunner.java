@@ -8,7 +8,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class AppRunner implements ApplicationRunner {
 
     private Logger logger = LoggerFactory.getLogger(AppRunner.class);
